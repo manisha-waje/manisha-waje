@@ -1,0 +1,28 @@
+%matplotlib inline
+import numpy as np
+from IPython.display import HTML
+from numpy import *
+import matplotlib.pyplot as plt
+from sklearn import linear_model
+from sklearn.linear_model import LinearRegression
+import pandas as pd
+import seaborn as sns; sns.set()
+df=pd.read_csv('homeprices.csv')
+df
+plt.xlabel('area(sq.ft.)')
+plt.ylabel('price(rs)')
+plt.scatter(df.area,df.price,color='red',marker='+')
+#create object for linear model
+reg = linear_model.LinearRegression()
+#fitting the data ,means we are training linear regression model with available data points
+reg.fit(df[['area']],df.price)
+reg = linear_model.LinearRegression()
+#fitting the data ,means we are training linear regression model with available data points
+reg.fit(df[['area']],df.price)
+reg.predict([[3300]])
+d = pd.read_csv("areas.csv")
+d.head(3)
+p=reg.predict(d)
+d['prices']=p
+d
+d.to_csv("prediction.csv",index=False)
